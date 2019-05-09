@@ -1,0 +1,62 @@
+.header {
+  height: 80vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  .header-half {
+    height: 40%;
+  }
+}
+.movies-search {
+  height: 100px;
+  .search-div {
+    height: 100px;
+  }
+  input {
+    height: 50px;
+    margin-top: 25px;
+    font-size: 28px;
+    border-radius: 25px;
+    padding-left: 20px;
+  }
+}
+.movie-info {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  h1 {
+    font-family: "Abel", sans-serif;
+    font-size: 48px;
+    margin-bottom: 30px;
+    color: white;
+  }
+  p {
+    font-family: "Abel", sans-serif;
+    font-size: 22px;
+    color: white;
+  }
+}
+
+.popular-movies {
+  h1 {
+    font-family: "Abel", sans-serif;
+    font-size: 48px;
+    margin: 28px 0;
+    display: block;
+  }
+  .movies-list {
+  }
+  .movie-item {
+    height: 435px;
+    width: 24%;
+    overflow: hidden;
+    img {
+      border: 1px solid transparent;
+      transition: all 0.3s;
+      backface-visibility: hidden;
+      &:hover {
+        transform: scale(1.01);
+      }
+    }
+  }
+}
