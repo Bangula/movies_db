@@ -121,8 +121,6 @@ function DetailsHeader({ id }) {
                 </div>
 
                 <h3>DIRECTORS</h3>
-                <p>{}</p>
-                <p>{}</p>
               </div>
             </div>
           </div>
