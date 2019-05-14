@@ -1,3 +1,12 @@
 #logo {
-    width: 300px;
+  width: 300px;
+}
+.navbar {
+  position: relative;
+  .imdb-logo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 122px;
+  }
 }

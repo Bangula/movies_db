@@ -2,23 +2,66 @@
   .header {
     position: relative;
     height: 65vh;
+    padding-top: 5vh;
+    .rating-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 50%;
+      grid-column-gap: 20px;
+    }
+    .rating {
+      width: 200px;
+      height: 18px;
+      background: #fff;
+      margin-top: 20px;
+      span {
+        color: #fff;
+      }
+      .meter {
+        height: 18px;
+        background: #17d47b;
+      }
+    }
+    h3 {
+      font-size: 16px;
+      line-height: 0;
+      margin-top: 30px;
+      color: #fff;
+    }
+    p {
+      font-family: Abel, sans-serif;
+      font-size: 18px;
+      line-height: 26px;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+    .genres {
+      margin-top: 30px;
+      margin-bottom: 40px;
+      span {
+        color: #fff;
+        margin-right: 20px;
+      }
+    }
+
     .header-info {
       width: 100%;
-      height: 80%;
-      border: 1px solid red;
+      height: 55vh;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
     }
     .movie-poster {
-      border: 1px solid orange;
       width: 350px;
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
     }
     .movie-info {
-      border: 1px solid green;
       display: block;
       background: rgba(0, 0, 0, 0.7);
       width: 100%;
+      border-radius: 0;
+      padding: 40px;
     }
   }
   .sub-nav {
@@ -48,6 +91,37 @@
       font-family: "Abel", sans-serif;
       color: #fff;
       font-size: 22px;
+    }
+  }
+  .actors {
+    padding-bottom: 100px;
+    h1 {
+      font-family: "Abel", sans-serif;
+      font-size: 48px;
+      margin: 28px 0;
+      display: block;
+    }
+    .actors-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 40px;
+    }
+
+    .actor-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: auto;
+      background: #353535;
+    }
+
+    p {
+      font-family: Abel, sans-serif;
+      font-size: 22px;
+      color: #fff;
+      margin: 10px 20px;
+    }
+    .char-name {
+      font-size: 18px;
     }
   }
 }

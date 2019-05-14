@@ -1,40 +1,45 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MoviesContext } from "../../../context/ContextProvider";
 
-function PopularMovies() {
-  const { getPopularMovies, state, getMovieById } = React.useContext(
-    MoviesContext
-  );
+function PopularMovies({ popularMoviesSearch, updateList }) {
+  let urlPath;
+  let url;
 
-  React.useEffect(() => {
-    getPopularMovies();
-  }, []);
+  const moviesList =
+    popularMoviesSearch.length > 0
+      ? popularMoviesSearch
+          .filter(
+            item => item.poster_path != null || item.poster_path != undefined
+          )
+          .map((item, index) => {
+            urlPath = item.poster_path;
+            url = `http://image.tmdb.org/t/p/w500/${urlPath}`;
 
-  const { popularMovies } = state;
-  //console.log(popularMovies);
-
-  const moviesList = popularMovies.map(item => {
-    let urlPath;
-    let url;
-    if (popularMovies.length > 0) {
-      urlPath = item.poster_path;
-      url = `http://image.tmdb.org/t/p/w500/${urlPath}`;
-    }
-
-    return (
-      <div className="movie-item flex-4 items-stretch" key={item.id}>
-        <Link to={`/details/${item.id}`} className="popular-link">
-          <img src={url} alt="movie poster" className="z-10" />
-        </Link>
-      </div>
-    );
-  });
+            return (
+              <div
+                className="movie-item flex-4 items-stretch"
+                key={item.id + index}
+              >
+                <Link to={`/details/${item.id}`} className="popular-link">
+                  <img
+                    style={{ height: "400px" }}
+                    src={url}
+                    alt="movie poster"
+                    className="z-10"
+                  />
+                </Link>
+              </div>
+            );
+          })
+      : null;
 
   return (
-    <div className="popular-movies container ls mx-auto">
+    <div className="popular-movies container xl mx-auto">
       <h1>Popular Movies</h1>
-      <div className="movies-list z-20 flex flex-wrap">{moviesList}</div>
+      <div className="movies-list z-20">{moviesList}</div>
+      <div className="load-more">
+        <button onClick={() => updateList()}>Load More</button>
+      </div>
     </div>
   );
 }

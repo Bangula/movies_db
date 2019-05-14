@@ -6,6 +6,7 @@ const MoviesContext = React.createContext();
 const ContextProvider = props => {
   const [state, setState] = React.useState({
     popularMovies: [],
+    credits: [],
     movieById: {}
   });
 
@@ -39,9 +40,23 @@ const ContextProvider = props => {
       })
       .catch(err => console.log(err));
   };
+  const getCredits = id => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=fc22f3679adfcc3e819328e339157dfa`
+      )
+      .then(res => {
+        setState({
+          ...state,
+          credits: res.data.cast
+        });
+      });
+  };
 
   return (
-    <MoviesContext.Provider value={{ state, getPopularMovies, getMovieById }}>
+    <MoviesContext.Provider
+      value={{ state, getPopularMovies, getMovieById, getCredits }}
+    >
       {props.children}
     </MoviesContext.Provider>
   );
