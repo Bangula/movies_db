@@ -3,6 +3,8 @@
     position: relative;
     height: 65vh;
     padding-top: 5vh;
+    opacity: 0.1;
+    transition: all 0.8s;
     .rating-container {
       display: grid;
       grid-template-columns: 1fr 1fr;

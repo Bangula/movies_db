@@ -13,6 +13,7 @@ function Actors({ id }) {
       )
       .then(res => {
         setActors(res.data.cast);
+        console.log(res.data.cast);
       })
       .catch(console.log);
   }, [id]);
@@ -29,7 +30,7 @@ function Actors({ id }) {
             <div className="actor-img">
               <img
                 src={profileImage}
-                alt="actor image"
+                alt="actorImage"
                 style={{ display: "block", height: "185px" }}
               />
             </div>

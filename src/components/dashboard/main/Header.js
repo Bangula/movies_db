@@ -4,9 +4,14 @@ import { DebounceInput } from "react-debounce-input";
 import { FaSearch } from "react-icons/fa";
 
 function Header(props) {
-  const { popularMovies, searchMovies } = props;
-  console.log(popularMovies[0]);
+  const headerDiv = React.createRef();
 
+  React.useEffect(() => {
+    let node = headerDiv.current;
+    node.style.opacity = "1";
+  }, []);
+
+  const { popularMovies, searchMovies } = props;
   let urlPath;
   let url;
   if (popularMovies.length > 0) {
@@ -14,8 +19,19 @@ function Header(props) {
     url = `http://image.tmdb.org/t/p/original${urlPath}`;
   }
 
+  const handleSearch = e => {
+    let isEmpty;
+    if (e.target.value === "" || e.target.value === undefined) {
+      isEmpty = true;
+    } else {
+      isEmpty = false;
+    }
+    searchMovies(e.target.value, isEmpty);
+  };
+
   return (
     <div
+      ref={headerDiv}
       className="header h-full border border-black relative"
       style={{ backgroundImage: `url(${url})` }}
     >
@@ -36,17 +52,10 @@ function Header(props) {
               minLength={0}
               className="bg-grey-darkest text-grey-dark"
               debounceTimeout={300}
-              onChange={e => searchMovies(e.target.value)}
+              onChange={e => handleSearch(e)}
               placeholder="Search"
             />
           </div>
-          {/* <DebounceInput
-            minLength={0}
-            debounceTimeout={300}
-            onChange={e => searchMovies(e.target.value)}
-            className="w-full rounded-lg bg-grey-darkest text-grey-dark"
-            placeholder="Search"
-          /> */}
         </div>
       </div>
     </div>

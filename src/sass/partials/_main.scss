@@ -3,6 +3,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  opacity: 0.1;
+  transition: all 0.8s;
   .header-half {
     height: 40%;
   }
@@ -31,7 +33,6 @@
     transform: translateY(-50%);
     margin-left: 40px;
     font-size: 32px;
-    width: 75%;
   }
 }
 .movie-info {

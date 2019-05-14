@@ -9,7 +9,7 @@ function PopularMovies({ popularMoviesSearch, updateList }) {
     popularMoviesSearch.length > 0
       ? popularMoviesSearch
           .filter(
-            item => item.poster_path != null || item.poster_path != undefined
+            item => item.poster_path !== null || item.poster_path !== undefined
           )
           .map((item, index) => {
             urlPath = item.poster_path;
@@ -22,7 +22,11 @@ function PopularMovies({ popularMoviesSearch, updateList }) {
               >
                 <Link to={`/details/${item.id}`} className="popular-link">
                   <img
-                    style={{ height: "400px" }}
+                    style={{
+                      height: "400px",
+                      width: "270px",
+                      display: "block"
+                    }}
                     src={url}
                     alt="movie poster"
                     className="z-10"

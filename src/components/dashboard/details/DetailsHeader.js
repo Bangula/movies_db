@@ -9,6 +9,15 @@ function DetailsHeader({ id }) {
   const [movie, setMovie] = React.useState({});
   const [loader, setLoader] = React.useState(true);
 
+  const headerDiv2 = React.createRef();
+
+  React.useEffect(() => {
+    if (!loader) {
+      let node2 = headerDiv2.current;
+      node2.style.opacity = "1";
+    }
+  }, [loader]);
+
   React.useEffect(() => {
     axios
       .get(
@@ -67,7 +76,11 @@ function DetailsHeader({ id }) {
               </p>
             </div>
           </div>
-          <div className="header" style={{ backgroundImage: `url(${url1})` }}>
+          <div
+            className="header"
+            style={{ backgroundImage: `url(${url1})` }}
+            ref={headerDiv2}
+          >
             <div className="header-info container lg mx-auto">
               <div
                 className="movie-poster"
