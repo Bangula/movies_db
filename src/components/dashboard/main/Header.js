@@ -18,17 +18,6 @@ function Header(props) {
     urlPath = popularMovies[0].backdrop_path;
     url = `http://image.tmdb.org/t/p/original${urlPath}`;
   }
-
-  const handleSearch = e => {
-    let isEmpty;
-    if (e.target.value === "" || e.target.value === undefined) {
-      isEmpty = true;
-    } else {
-      isEmpty = false;
-    }
-    searchMovies(e.target.value, isEmpty);
-  };
-
   return (
     <div
       ref={headerDiv}
@@ -49,10 +38,10 @@ function Header(props) {
               <FaSearch />
             </span>
             <DebounceInput
-              minLength={0}
+              minLength={2}
               className="bg-grey-darkest text-grey-dark"
               debounceTimeout={300}
-              onChange={e => handleSearch(e)}
+              onChange={e => searchMovies(e.target.value)}
               placeholder="Search"
             />
           </div>
